@@ -1,0 +1,43 @@
+Module Module1
+
+    Sub Main()
+        Dim ArrOfChar(255) As Integer
+        Dim i As Integer
+        Dim Str1 As String
+        Dim nextChar As Char
+        Dim Y As Integer
+        Dim max As Integer
+        Dim Repeated As Boolean = False
+
+        For i = 0 To 255
+            ArrOfChar(i) = 0
+        Next
+
+        Console.Write("Please input String: ")
+        Str1 = Console.ReadLine()
+
+        For i = 1 To Len(Str1)
+            nextChar = Mid(Str1, i, 1)
+            ArrOfChar(Asc(nextChar)) = ArrOfChar(Asc(nextChar)) + 1
+        Next
+
+        max = 1
+        For i = 0 To 255
+            If ArrOfChar(i) <> 0 Then
+                If ArrOfChar(i) > max Then
+                    max = ArrOfChar(i)
+                    Y = i
+                End If
+            End If
+        Next
+
+        If Y = 32 Then
+            Console.WriteLine("Most repeated character is: " & "' '" & "(SPACE)")
+        Else
+            Console.WriteLine("Most repeated character is: " & Chr(Y))
+        End If
+
+        Console.ReadKey()
+    End Sub
+
+End Module
